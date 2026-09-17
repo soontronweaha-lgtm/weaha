@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b6b57">
+  <meta name="description" content="หนังสือเพลงพร้อมคอร์ด ค้นหาเพลง ใช้งานบนโทรศัพท์ และเปิดแบบออฟไลน์ได้">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>หนังสือเพลงอิเล็กทรอนิกส์</title>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-row">
+      <div>
+        <p class="eyebrow">SONGBOOK</p>
+        <h1>หนังสือเพลงอิเล็กทรอนิกส์</h1>
+      </div>
+      <button id="installButton" class="icon-button" hidden aria-label="ติดตั้งแอป">ติดตั้ง</button>
+    </div>
+    <div class="search-grid">
+      <label class="field">
+        <span>ค้นหาชื่อเพลง</span>
+        <input id="searchInput" type="search" placeholder="พิมพ์ชื่อเพลง…" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>เลือกจากรายการ</span>
+        <select id="songSelect" aria-label="เลือกชื่อเพลง"></select>
+      </label>
+    </div>
+    <div id="searchResults" class="search-results" hidden></div>
+  </header>
+
+  <main>
+    <section class="song-heading" aria-live="polite">
+      <div>
+        <p id="songNumber" class="song-number"></p>
+        <h2 id="songTitle">กำลังโหลด…</h2>
+      </div>
+      <button id="favoriteButton" class="favorite" aria-label="เพิ่มในรายการโปรด" aria-pressed="false">☆</button>
+    </section>
+    <div id="status" class="status">กำลังเตรียมหนังสือเพลง…</div>
+    <section id="lyricStage" class="lyric-stage">
+      <img id="lyricImage" alt="เนื้อเพลงพร้อมคอร์ด" draggable="false">
+      <button id="textViewButton" class="text-view-button" hidden>เปลี่ยน Key / ดูแบบข้อความ</button>
+      <div id="transposeView" class="transpose-view" hidden>
+        <div class="transpose-bar">
+          <button id="keyDownButton" aria-label="ลดคีย์หนึ่งครึ่งเสียง">−1</button>
+          <label>Key <select id="keySelect" aria-label="เลือกคีย์เพลง"></select></label>
+          <button id="keyUpButton" aria-label="เพิ่มคีย์หนึ่งครึ่งเสียง">+1</button>
+          <button id="resetKeyButton">Key เดิม</button>
+          <button id="originalViewButton">ดูภาพต้นฉบับ</button>
+        </div>
+        <p id="keyNote" class="key-note"></p>
+        <div id="chordSheet" class="chord-sheet"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="control-dock">
+    <div class="primary-controls">
+      <button id="prevButton">‹ ก่อนหน้า</button>
+      <button id="tocButton">รายชื่อเพลง</button>
+      <button id="nextButton">ถัดไป ›</button>
+    </div>
+    <div class="tool-controls">
+      <button id="soundButton">♫ เพลง</button>
+      <button id="drumButton">🥁 กลอง</button>
+      <button id="bassButton">𝄢 เบส</button>
+      <button id="autoScrollButton">▶ เลื่อน</button>
+      <label class="speed-control">ความเร็ว
+        <input id="speedRange" type="range" min="0.25" max="5" step="0.25" value="1.5">
+      </label>
+      <button id="zoomOutButton" aria-label="ย่อเนื้อเพลง">A−</button>
+      <button id="zoomInButton" aria-label="ขยายเนื้อเพลง">A+</button>
+      <button id="favoritesOnlyButton">☆ โปรด</button>
+    </div>
+  </footer>
+
+  <dialog id="catalogDialog">
+    <div class="dialog-head">
+      <div><p class="eyebrow">สารบัญ</p><h2>รายชื่อเพลงทั้งหมด</h2></div>
+      <button id="closeDialogButton" class="close-button" aria-label="ปิด">×</button>
+    </div>
+    <div id="catalogList" class="catalog-list"></div>
+  </dialog>
+
+  <script src="songs-data.js" defer></script>
+  <script src="transpose-samples.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

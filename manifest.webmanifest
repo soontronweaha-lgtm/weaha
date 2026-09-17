@@ -1,0 +1,11 @@
+{
+  "name": "หนังสือเพลงอิเล็กทรอนิกส์",
+  "short_name": "หนังสือเพลง",
+  "description": "หนังสือเพลงพร้อมคอร์ดสำหรับโทรศัพท์",
+  "lang": "th",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff8e8",
+  "theme_color": "#0b6b57",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
